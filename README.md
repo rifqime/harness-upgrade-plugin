@@ -1,146 +1,159 @@
 # Harness Upgrade Plugin
 
-I built this because the messy part was never just writing code.
+I made this because the hard part was usually not the coding itself.
 
-The messy part was everything before that.
+The hard part was what happened before the coding.
 
-Ideas were coming from marketing, ops, sales, research, and product. The codebases were older, scattered, inconsistently documented, and full of unwritten assumptions. Even when the idea was good, turning it into something developers could implement safely was slow and noisy.
+Ideas were coming in from ops, marketing, sales, research, and product. The repos were older, scattered, and unevenly documented. A lot of the real context lived in chat, in habits, or in the heads of a few people who already knew how everything worked.
 
-That translation layer was missing.
+That meant even a good idea could get stuck in translation.
 
-So this plugin is my attempt to make that first layer better.
+Someone still had to turn it into something engineering could actually use:
 
-Not by pretending AI can replace engineering judgment.
+- a repo-aware spec
+- a grounded PRD
+- a clearer read on what the system already does
+- a first pass at docs that make the codebase easier to work with
 
-By giving Codex a safer way to read an existing repo, understand enough of its current reality, ask the minimum clarifying questions, and draft an initial harness or a more codebase-aware spec direction.
+That is what this plugin is for.
 
-If that helps other people, good.
-
-If it only reflects how I like to operate, that is also fine.
+It is not trying to automate product strategy or replace engineering review. It is trying to make the first translation step less messy.
 
 ## What this is
 
-This is an opinionated Codex plugin for existing repositories.
+This is an opinionated Codex plugin for working with existing repositories.
 
-The core job is simple:
+The job is straightforward:
 
-- read an existing codebase
-- identify what is missing for harness readiness
-- ask focused questions instead of guessing
-- draft a docs-only initial harness
-- make it easier for non-engineering ideas to become developer-friendly artifacts
+- read the repo as it exists today
+- figure out what is missing for a basic harness
+- ask only the questions needed to avoid guessing
+- draft docs-only harness material
+- help turn cross-functional ideas into something closer to engineering reality
 
-In practice, that means it can help create:
+In practice, that can mean drafting:
 
-- an initial `AGENTS.md`
-- repo maps and reading order
-- architecture or system overview docs
-- deploy/runbook clarification
-- contributor and review guidance
-- early spec or PRD-style documentation that fits the repo better than a blank-template product brief
+- an `AGENTS.md`
+- a repo map or reading order
+- architecture notes
+- deploy and runbook clarification
+- contributor guidance
+- review scaffolding
+- an early spec or PRD that fits the actual codebase better than a generic template
 
-## Why I wanted this
+## Why I wanted it
 
-Across multiple products, the problem kept looking similar:
+Across different products, I kept seeing the same problem.
 
-- the codebase truth lived in chat and in people’s heads
-- ops and product ideas arrived far away from the implementation details
-- engineers had to re-translate business intent into codebase reality every time
-- AI was useful, but it often guessed wrong when the repository itself was not legible
+The business side of the work and the code side of the work were too far apart.
 
-What I wanted was not a giant autonomous builder.
+Ops might know the process pain. Sales might know what customers keep asking for. Marketing might know the campaign idea. Product might know the direction. But turning that into something that fits a real codebase was still a separate job, and usually a messy one.
 
-What I wanted was a better operator-side workflow:
+AI can help with that, but only up to a point.
 
-- something that can sit closer to ops, product, growth, sales, or research
-- something that can inspect the current repo before proposing structure
-- something that can draft a first translation layer for engineering
-- something that reduces bad assumptions before work reaches the main codebase
+If the repo is hard to read, the AI usually fills the gaps with confident guesses. That is where a lot of bad specs come from.
 
-That is what this plugin is trying to be.
+So the goal here is simpler than “AI builds the feature.”
 
-## The core idea
+The goal is to give AI enough structure to produce a better first translation layer between idea and implementation.
 
-Before AI can reliably help implement work in an older repo, the repo needs a better harness.
+## The main idea
 
-Without that, ideas from non-engineering teams tend to become one of two bad things:
+Older codebases are often not ready for agent-assisted work, even if the code itself is fine.
 
-- vague requests that developers have to reinterpret from scratch
-- AI-generated specs that sound polished but do not actually match the system
+The missing piece is usually the harness:
 
-The goal here is to improve that first step.
+- what the system is
+- what is actually live
+- where the boundaries are
+- what is safe to touch
+- what needs approval
+- how work is supposed to move from idea to implementation
 
-Use AI to produce a better repo-aware translation layer, not fake certainty.
+Once that is more explicit, both humans and AI have a better chance of producing useful work.
 
-## What it can actually do
+So this plugin starts there.
 
-This is the important part.
+## What it can do
 
-The real promise is narrower than "turn business ideas into production-ready implementation automatically."
+What it is good at:
 
-What the plugin can do well:
+- inspecting an existing repo and its docs
+- finding missing or conflicting harness information
+- asking focused owner questions
+- drafting an initial docs-only harness
+- producing more codebase-aware spec direction than a blank PRD prompt
+- helping operators or product-adjacent people prepare something engineering can react to faster
 
-- inspect an existing repository and its current docs
-- identify harness gaps and contradictions
-- ask short, high-value owner questions
-- draft an initial docs-only harness
-- produce more codebase-aware spec direction than a generic PRD prompt
-- help operators or product people generate something engineering can react to faster
+What it is not good at:
 
-What it does not do:
+- understanding every legacy repo perfectly
+- replacing technical review
+- inventing architecture truth safely
+- inventing deploy or ownership rules safely
+- turning rough business ideas directly into correct implementation plans with no clarification
 
-- understand every legacy codebase perfectly
-- replace technical review
-- invent ownership, deploy policy, or architecture truth safely
-- turn rough ideas directly into correct implementation plans without repo-specific clarification
-- make an old codebase magically "agent-native"
+So the promise here is intentionally narrow:
 
-So yes, the promise is aligned with the real capability if you phrase it like this:
-
-This plugin helps create the initial harness and translation layer that makes old codebases easier for humans and AI to work with. It can also help turn cross-functional ideas into more developer-friendly, codebase-aware specs. It is not an automatic implementation engine.
+This plugin helps create an initial harness and a better AI translation layer for older repositories. It can also help turn cross-functional ideas into more developer-friendly, codebase-aware docs or specs. It is not an automatic implementation system.
 
 ## Who this is for
 
-Primarily:
+Mostly:
 
 - operators
 - product people
 - founders
 - researchers
 - growth or sales-adjacent teams
-- technical operators working between business context and engineering execution
+- technical generalists sitting between business context and engineering execution
 
-Secondarily:
+Also:
 
 - engineers inheriting an older repo
-- engineering leads trying to make a repo easier for AI-assisted work
+- engineering leads who want a repo to be easier to work with using AI
 
-This is more operator-facing than developer-facing.
+So yes, this leans more toward the operator side than the developer side.
 
-The output should become easier for developers to use, but the need usually starts earlier than engineering.
+The point is not that developers are the audience for the plugin itself. The point is that the output should be easier for developers to use.
+
+## Reference, not doctrine
+
+The main reference behind this repo is OpenAI’s harness-engineering article:
+
+- [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)
+
+I think it is a useful reference. I also think it is opinionated, just like this repo is opinionated.
+
+I am not treating that article as universal policy, and I do not think other teams should copy it blindly. I use it more as a strong example of the kind of repo legibility that helps agents do less guessing.
+
+This plugin follows that spirit, but it stays practical:
+
+- document reality
+- do not redesign the product
+- do not invent process
+- keep approvals explicit
 
 ## How to use it
 
-There are two practical ways to use this repo.
+There are two simple ways to use this repo.
 
 ### 1. Plugin mode
 
 Install the Codex plugin and use it inside a target repository.
 
-That is the easiest path if you want Codex to:
+This is the easier path if you want Codex to:
 
 - inspect the repo
-- run a Pass 1 harness-readiness assessment
+- run a first-pass harness assessment
 - ask the minimum owner questions
 - draft docs-only harness updates
 
-Use this when you want a reusable workflow.
-
 ### 2. Playbook mode
 
-Read the bundled skill and reference docs directly and adapt the workflow manually.
+Read the bundled skill and reference docs directly and use the workflow more manually.
 
-Use this when you want the thinking and structure, but not necessarily the plugin packaging.
+This is useful if you like the approach but do not necessarily want to depend on the plugin packaging.
 
 ## Quick start
 
@@ -167,7 +180,7 @@ Detailed package-level install notes live in [plugins/harness-upgrade/README.md]
 
 ## Repository layout
 
-- `.agents/plugins/marketplace.json` provides a repo-local marketplace entry for testing in Codex
+- `.agents/plugins/marketplace.json` gives you a repo-local marketplace entry for testing in Codex
 - `plugins/harness-upgrade` contains the installable plugin package
 - `plugins/harness-upgrade/skills/harness-upgrade` contains the public skill, `$harness-upgrade`
 

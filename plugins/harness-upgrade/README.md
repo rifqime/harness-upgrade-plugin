@@ -2,7 +2,7 @@
 
 This package turns an opinionated harness workflow into an installable Codex plugin.
 
-I built it for a messy but common problem: ideas come from ops, marketing, sales, research, and product, but older codebases are hard to translate those ideas into safely. This plugin is meant to create the first repo-aware translation layer, not to pretend the repo is already clean or agent-ready.
+I built it for a common problem: ideas come from ops, marketing, sales, research, and product, but older codebases are usually harder to translate those ideas into than people expect. This plugin is meant to help with that first translation layer. It is not pretending the repo is already clean or agent-ready.
 
 The plugin is conservative by design: it reads the repo, asks focused owner questions, and drafts docs/workflow guidance for review. It does not try to redesign the product or change runtime behavior.
 
@@ -21,6 +21,12 @@ Use this plugin when you want Codex to help:
 - draft developer-friendlier specs or harness docs that reflect repo reality better than generic planning prompts
 
 Do not use it as if it can automatically convert business ideas into correct implementation plans without review. The output should be treated as a stronger starting point for engineering, not as final truth.
+
+The main reference behind this workflow is OpenAI's harness-engineering article:
+
+- [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/)
+
+That article is useful, but it is also opinionated. This plugin treats it as reference material, not as strict policy.
 
 ## Installation
 
