@@ -1,0 +1,20 @@
+{
+  "name": "harness-upgrade-plugin",
+  "interface": {
+    "displayName": "Harness Upgrade Plugin"
+  },
+  "plugins": [
+    {
+      "name": "harness-upgrade",
+      "source": {
+        "source": "local",
+        "path": "./plugins/harness-upgrade"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
