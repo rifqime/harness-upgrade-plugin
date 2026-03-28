@@ -2,19 +2,50 @@
 
 Pass 1 is discovery and clarification only.
 
+Use this pass to understand the repository as it exists today and to decide what must be clarified before any harness docs are written.
+
+## Before Starting
+
+- read the repository's current source-of-truth docs, contributor guidance, deploy docs, and any existing harness assets
+- use the OpenAI harness-engineering article as a reference baseline for agent-legible repos
+- assume the repo may already have partial harness material; audit and reconcile it before declaring gaps
+
+## Required Discovery
+
+Read enough of the repository to understand its current reality:
+
+- repository structure and major directories
+- manifests, configs, env usage, and key entrypoints
+- deploy files, scripts, CI, and runtime boundaries
+- contributor docs, workflow docs, and ownership signals
+- existing `README`, `AGENTS.md`, templates, runbooks, checklists, or validation scripts
+
+## Minimum Harness Baseline
+
+Compare the repo against this baseline:
+
+- concise `AGENTS.md` or repo map
+- source-of-truth rules
+- architecture boundaries
+- deploy/runbook clarity
+- contributor workflow
+- issue/spec/ADR guidance
+- PR/review expectations
+
 ## Allowed
 
-- read the repo structure, manifests, configs, docs, CI, deploy files, and contributor instructions
-- inspect current docs and workflow assets
-- identify missing, stale, or contradictory repo guidance
-- ask only the questions needed to build an accurate harness
+- identify what is already good enough
+- identify what is missing, stale, contradictory, or ambiguous
+- infer facts from the repository itself
+- ask only the clarification questions needed to build an accurate initial harness
 
 ## Not Allowed
 
 - application logic changes
 - refactoring working code
 - runtime, deploy, or environment changes
-- creating harness files before clarification
+- creating or editing harness files before clarification
+- proposing broad redesigns or refactors as a substitute for understanding the repo
 
 ## Pass 1 Output
 
@@ -39,7 +70,10 @@ Group the questions under:
 ## Pass 1 Guardrails
 
 - read the repo before asking questions
+- infer what you can from the repo first
 - ask only high-impact questions
 - do not ask vague opinion questions
 - do not ask questions already answerable from the repo
-- if the repo already has `AGENTS.md`, docs, templates, or workflow checks, audit and reconcile them rather than assuming the repo is unharnessed
+- do not let missing context become an excuse for generic boilerplate
+- if the repo already has harness assets, audit and reconcile them rather than assuming the repo is unharnessed
+- stop after Pass 1 if owner answers are not yet available

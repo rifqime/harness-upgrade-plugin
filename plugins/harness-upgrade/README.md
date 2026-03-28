@@ -4,7 +4,7 @@ This package turns an opinionated harness workflow into an installable Codex plu
 
 I built it for a common problem: ideas come from ops, marketing, sales, research, and product, but older codebases are usually harder to translate those ideas into than people expect. This plugin is meant to help with that first translation layer. It is not pretending the repo is already clean or agent-ready.
 
-The plugin is conservative by design: it reads the repo, asks focused owner questions, and drafts docs/workflow guidance for review. It does not try to redesign the product or change runtime behavior.
+The plugin is strict by design: it reads the repo, runs Pass 1 first, asks focused owner questions, and only then drafts docs/workflow guidance for review. It is written for strong reasoning models, not lightweight convenience runs. It does not try to redesign the product or change runtime behavior.
 
 ## What It Includes
 
@@ -76,7 +76,7 @@ Example personal marketplace entry:
 Open the target repository in Codex and invoke the skill explicitly:
 
 ```text
-Use $harness-upgrade to assess this repository and draft an initial harness.
+Use $harness-upgrade to inspect this repository, run Pass 1 only, ask the minimum clarification questions, and after my answers run Pass 2 to draft the initial harness.
 ```
 
 The skill will:

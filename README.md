@@ -23,6 +23,8 @@ It is not trying to automate product strategy or replace engineering review. It 
 
 This is an opinionated Codex plugin for working with existing repositories.
 
+It is written for frontier reasoning models and a strict two-pass workflow. It is not meant to be a generic docs helper or a one-shot planning assistant.
+
 The job is straightforward:
 
 - read the repo as it exists today
@@ -79,6 +81,7 @@ So this plugin starts there.
 What it is good at:
 
 - inspecting an existing repo and its docs
+- running a strict Pass 1 before writing anything
 - finding missing or conflicting harness information
 - asking focused owner questions
 - drafting an initial docs-only harness
@@ -165,7 +168,7 @@ This is useful if you like the approach but do not necessarily want to depend on
 6. Invoke:
 
 ```text
-Use $harness-upgrade to assess this repository and draft an initial harness.
+Use $harness-upgrade to inspect this repository, run Pass 1 only, ask the minimum clarification questions, and after my answers run Pass 2 to draft the initial harness.
 ```
 
 ## Home-local install
